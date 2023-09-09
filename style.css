@@ -1,0 +1,70 @@
+/* Style for the form container */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    text-align: center;
+}
+
+form {
+    background-color: #ffffff;
+    max-width: 500px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+h1 {
+    color: #333;
+}
+
+h2 {
+    color: #555;
+}
+
+/* Style for form fields */
+label {
+    display: block;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+input[type="text"],
+input[type="number"],
+select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+select {
+    height: 100px; /* Adjust height for multi-select */
+}
+
+/* Style for submit button */
+input[type="submit"] {
+    background-color: #333;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+/* Style for calculation results */
+p {
+    font-weight: bold;
+    margin: 5px 0;
+}
+
+/* Style for the balance amount in green */
+#balanceAmount {
+    color: green;
+}
+
+/* Style for the total cost in blue */
+#totalCost {
+    color: blue;
+}
