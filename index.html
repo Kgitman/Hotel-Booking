@@ -1,0 +1,83 @@
+<!doctype html>
+<html> 
+ <head> 
+  <title>Hotel Booking Registration</title> 
+ </head> 
+ <body> 
+  <h1>Hotel Booking Registration Form</h1> 
+  <form id="bookingForm"> <!-- Customer Info --> 
+   <h2>Customer Info</h2> <label for="customerName">Customer Name:</label> 
+   <input type="text" id="customerName" required>
+   <br> <label for="checkinDate">Check-in Date:</label> 
+   <input type="date" id="checkinDate" required>
+   <br> <label for="totalDays">Total No of Days:</label> 
+   <input type="number" id="totalDays" required>
+   <br> <label for="totalPersons">Total No of Persons:</label> 
+   <input type="number" id="totalPersons" required>
+   <br> <!-- Room Information --> 
+   <h2>Room Information</h2> <label for="roomType">Room Type:</label> <select id="roomType"> <option value="Delux">Delux Room</option> <option value="Suite">Suite Room</option> </select>
+   <br> <label for="amenities">Amenities:</label> <select id="amenities" multiple> <option value="AC">AC</option> <option value="Locker">Locker</option> </select>
+   <br> <!-- Room Rates --> 
+   <h2>Room Rates</h2> 
+   <p>Delux Room: 2500/- per day</p> 
+   <p>Suite Room: 4000/- per day</p> 
+   <p>AC: 1000/- per day</p> 
+   <p>Locker: 300/- per day</p> <!-- Advance Payment --> 
+   <h2>Advance Payment</h2> <label for="advanceAmount">Advance Amount:</label> 
+   <input type="number" id="advanceAmount" required>
+   <br> <!-- Balance Amount --> 
+   <h2>Balance Amount</h2> 
+   <p id="balanceAmount">-</p> <!-- Total Cost Calculation --> 
+   <h2>Total Cost Calculation</h2> 
+   <p id="totalRoomCost">-</p> 
+   <p id="totalAmenitiesCost">-</p> 
+   <p id="totalCost">-</p> <!-- Additional Charges --> 
+   <h2>Additional Charges</h2> 
+   <p>Upto 2 People: No Change in Cost</p> 
+   <p>Per Day Cost for Extra Person: 1000/-</p> 
+   <input type="submit" value="Submit"> 
+  </form> 
+  <script>
+        const form = document.getElementById("bookingForm");
+
+        form.addEventListener("submit", function (e) {
+            e.preventDefault();
+
+            // Calculate balance amount
+            const advanceAmount = parseInt(document.getElementById("advanceAmount").value);
+            const totalCost = parseInt(document.getElementById("totalCost").innerText);
+            const balanceAmount = totalCost - advanceAmount;
+            document.getElementById("balanceAmount").innerText = balanceAmount;
+
+            // Calculate total room cost and total amenities cost
+            const totalDays = parseInt(document.getElementById("totalDays").value);
+            const roomType = document.getElementById("roomType").value;
+            const amenities = Array.from(document.getElementById("amenities").selectedOptions, option => option.value);
+
+            let roomRate = 0;
+            if (roomType === "Delux") {
+                roomRate = 2500;
+            } else if (roomType === "Suite") {
+                roomRate = 4000;
+            }
+
+            let amenitiesCost = 0;
+            if (amenities.includes("AC")) {
+                amenitiesCost += 1000;
+            }
+            if (amenities.includes("Locker")) {
+                amenitiesCost += 300;
+            }
+
+            const totalRoomCost = roomRate * totalDays;
+            const totalAmenitiesCost = amenitiesCost * totalDays;
+            document.getElementById("totalRoomCost").innerText = totalRoomCost;
+            document.getElementById("totalAmenitiesCost").innerText = totalAmenitiesCost;
+
+            // Calculate total cost
+            const totalCostCalculation = totalRoomCost + totalAmenitiesCost;
+            document.getElementById("totalCost").innerText = totalCostCalculation;
+        });
+    </script> 
+ </body>
+                                                                                                                                                 </html>
