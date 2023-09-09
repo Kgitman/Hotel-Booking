@@ -1,12 +1,18 @@
-/* Style for the form container */
+/* Add the provided image as the background for the form container */
 body {
     font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
+    background-image: url('https://cdn.pixabay.com/photo/2017/03/25/17/55/colorful-2174045_1280.png'); /* Use the provided image URL */
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
     text-align: center;
+    background-blur: blur(5px); /* Optional: Apply a blur effect to the background */
+    color: #fff; /* Set text color to white for better contrast */
 }
 
+/* Style for the form container */
 form {
-    background-color: #ffffff;
+    background-color: rgba(255, 255, 255, 0.8); /* Add a semi-transparent white background for the form */
     max-width: 500px;
     margin: 0 auto;
     padding: 20px;
